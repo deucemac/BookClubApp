@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import './css/addbook.scss'
+
 export default function AddBook() {
   const [book, setBook] = useState({
     author: '',
@@ -35,9 +37,10 @@ export default function AddBook() {
     })
   }
   return (
-    <>
+    <div class="form-container">
       <form>
-        <label>Author: </label>
+        <div class="form-group">
+        <label>Author</label>
         <input
           type="text"
           name="author"
@@ -45,8 +48,10 @@ export default function AddBook() {
           onChange={e => setBook(prevState => {
             return { ...prevState, author: e.target.value }
           }) }
-        /><br></br>
-        <label>Title: </label>
+          />
+        </div>
+        <div class="form-group">
+        <label>Title</label>
         <input
           type="text"
           name="title"
@@ -54,8 +59,10 @@ export default function AddBook() {
           onChange={e => setBook(prevState => {
             return { ...prevState, title: e.target.value }
           }) }
-        /><br></br>
-        <label>Description: </label>
+          />
+        </div>
+        <div class="form-group">
+        <label>Description</label>
         <textarea
           id="description"
           name="description"
@@ -63,8 +70,10 @@ export default function AddBook() {
           onChange={e => setBook(prevState => {
             return { ...prevState, description: e.target.value }
           }) }
-        /><br></br>
-        <label>image: </label>
+          />
+        </div>
+        <div class="form-group">
+        <label>image</label>
         <input
           type="text"
           name="image"
@@ -73,17 +82,20 @@ export default function AddBook() {
           onChange={e => setBook(prevState => {
             return { ...prevState, image: e.target.value }
           }) }
-        /><br></br>
-        <div>
+          />
+          </div>
+        <div class="form-group">
            {/* moniker and comment now working but getting an error*/}
-          <label>username or moniker: </label>
+          <label>username or moniker</label>
             <input
               type="text"
               name="image"
               value={moniker}
               onChange={handleMonikerChange}
-            />
-          <label>comment: </label>
+          />
+          </div>
+          <div class="form-group">
+          <label>comment</label>
             <input
               type="text"
               name="image"
@@ -91,7 +103,8 @@ export default function AddBook() {
               onChange={handleBodyChange}
             />
         </div>
-        <label>Price: </label>
+        <div class="form-group">
+        <label>Price</label>
           <input
             type="text"
             name="image"
@@ -100,11 +113,13 @@ export default function AddBook() {
             onChange={e => setBook(prevState => {
               return { ...prevState, price: e.target.value }
             }) }
-        /><br></br>
+          />
+          </div>
+        <button onClick={incrementCount}><img src="" alt="like"/></button>
+        <span>{book.likes}</span><br></br>
+        <button type="submit">submit</button>
       </form>
-        <button onClick={ incrementCount }>+</button>
         {/* <span>{likes }</span> */}
-        <span>{book.likes }</span>
-    </>
+    </div>
   )
 }
