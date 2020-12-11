@@ -12,21 +12,14 @@ export default function AddBook() {
       moniker: '',
       body: ''
     }],
-    price: '',
-    likes: 0
+    price: ''
     })
   // console.log(book.author)
   // console.log(book.title)
   const author = book.author, title = book.title, description = book.description
   const image = book.image
   const moniker = book.comments[0].moniker, bodyComment = book.comments[0].body
-  const price = book.price
   console.log(book.comments[0])
-  function incrementCount() {
-    setBook(prevState => {
-      return {...prevState, likes: prevState.likes + 1}
-    })
-  }
   function handleBodyChange(e) {
     setBook(prevState => {
       return { ...prevState, comments:[{body: e.target.value}]}
@@ -104,20 +97,6 @@ export default function AddBook() {
               onChange={handleBodyChange}
             />
         </div>
-        <div class="form-group">
-        <label>Price</label>
-          <input
-            type="text"
-            name="image"
-            placeholder="Integer only USD"
-            value={price}
-            onChange={e => setBook(prevState => {
-              return { ...prevState, price: e.target.value }
-            }) }
-          />
-        </div>
-        <img src={likebutton} alt="like" class="like-button" onClick={incrementCount}/>
-        <span class="like-count">{book.likes}</span><br></br>
         <button type="submit">submit</button>
       </form>
     </div>
