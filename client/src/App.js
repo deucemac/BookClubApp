@@ -1,10 +1,10 @@
-import AddBoook from './AddBook'
+import AddBook from './AddBook'
 import './css/app.scss'
 
 function App() {
   return (
     <body>
-      <AddBoook />
+      <AddBook />
     </body>
   );
 }

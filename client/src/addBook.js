@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './css/addbook.scss'
+import likebutton from './imgs/likebutton.png'
 
 export default function AddBook() {
   const [book, setBook] = useState({
@@ -114,12 +115,11 @@ export default function AddBook() {
               return { ...prevState, price: e.target.value }
             }) }
           />
-          </div>
-        <button onClick={incrementCount}><img src="" alt="like"/></button>
-        <span>{book.likes}</span><br></br>
+        </div>
+        <img src={likebutton} alt="like" class="like-button" onClick={incrementCount}/>
+        <span class="like-count">{book.likes}</span><br></br>
         <button type="submit">submit</button>
       </form>
-        {/* <span>{likes }</span> */}
     </div>
   )
 }
