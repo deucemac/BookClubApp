@@ -1,11 +1,13 @@
 import AddBook from './AddBook'
 import './css/app.scss'
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
-    <body>
+    <div className="App">
       <AddBook />
-    </body>
+    </div>
   );
 }
 

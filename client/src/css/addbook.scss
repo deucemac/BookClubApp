@@ -15,7 +15,7 @@
   font-size: 24px;
   color: white;
   border-radius: 4px;
-
+}
 
 .form-group input,
 .form-group textarea{
@@ -26,12 +26,15 @@
   border: none;
   background: transparent;
   border-bottom: 2px solid #38dcf5;
+  font-family: 'Amatic SC', cursive, -apple-system, BlinkMacSystemFont, 'Segoe UI';
+  color:white;
 }
 
 
 ::placeholder{
   font-family: 'Amatic SC', cursive;
   font-size: 20px;
+  color: white;
 }
 
 button[type="submit"]{
@@ -50,5 +53,4 @@ button[type="submit"]{
 }
 .like-count{
   font-size: 30px;
-}
 }

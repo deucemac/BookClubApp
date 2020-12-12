@@ -1,5 +1,5 @@
-/* * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-} */
+.App{
+/* app and body condense down to a small height percentage of the page if min-height is not set a 100vh*/
+  min-height: 100vh;
+  background-color: black;
+}
