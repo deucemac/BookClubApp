@@ -47,10 +47,6 @@ export default function AddBook() {
     
     };
 
-    
-
-  
-
   return (
     <div className="form-container">
       <form onSubmit={submitForm}>
@@ -126,7 +122,9 @@ export default function AddBook() {
             }}
           />
         </div>
-        <button type="submit">submit</button>
+        <div  className="button-container">
+          <button type="submit">submit</button>
+        </div>
       </form>
     </div>
   )
