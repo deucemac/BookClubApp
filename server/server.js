@@ -18,6 +18,11 @@ db.once('connected', () => {
   console.log('Mongoose is connected')
 })
 
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 
 // Morgan is http request logger
 app.use(morgan('tiny'));

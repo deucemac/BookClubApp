@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './css/addbook.scss'
+// import axios from 'axios';
+import {addBook} from './services/api-method'
 
 export default function AddBook() {
   const [book, setBook] = useState({
@@ -10,40 +12,88 @@ export default function AddBook() {
     comments: [{
       moniker: '',
       body: ''
-    }],
-    price: ''
+    }]
   })
-  const author = book.author, title = book.title, description = book.description
-  const image = book.image
-  const moniker = book.comments[0].moniker, bodyComment = book.comments[0].body
-  function handleBodyChange(e) {
-    setBook(prevState => {
-      return { ...prevState, comments: [{ body: e.target.value }] }
-    })
-  }
-  function handleMonikerChange(e) {
-    setBook(prevState => {
-      return { ...prevState, comments: [{ moniker: e.target.value }] }
-    })
-  }
-  function handleChange(e) {
-    const target = e.target;
-    const name = target.name
-    const value = target.value;
+  // const moniker = book.comments[0].moniker
+  const bodyComment = book.comments[0].body
+  console.log(book);
+  // function handleBodyChange({ target }) {
+  //   const { name, value } = target
+  //   setBook(prevState => {
+  //     return {
+  //       ...prevState,
+  //       comments: [{
+  //         ...book.comments[0].moniker,
+  //         [name]: value
+  //       }]
+  //     }
+  //   })
+  // }
+
+  // function handleMonikerChange({ target }) {
+  //   const { name, value } = target
+  //   setBook(prevState => {
+  //     return {
+  //       ...prevState,
+  //       comments: [{
+  //         [name]: value
+  //       }]
+  //     }
+  //   })
+  // }
+  
+
+  function handleChange({ target }) {
+    const { name, value } = target;
+
     setBook(prevState => {
       return { ...prevState, [name]: value }
     })
   }
+  function handleBodyChange({ target }) {
+    const { name, value } = target;
+
+    setBook(prevState=>({
+      ...prevState,
+      [name]: value
+    }))
+  }
+
+  async function submitForm(event) {
+    event.preventDefault();
+    const payload = {
+      author: book.author,
+      title: book.title,
+      description: book.description,
+      image: book.image,
+      comments: [{
+        moniker: book.comments[0].moniker,
+        body: book.comments[0].body
+      }]
+    }
+    await addBook(
+      payload.author,
+      payload.title,
+      payload.description,
+      payload.image,
+      payload.comments[0],
+    )
+    
+    };
+
+    
+
+  
 
   return (
     <div className="form-container">
-      <form>
+      <form onSubmit={submitForm}>
         <div className="form-group">
           <label>Author</label>
           <input
             type="text"
             name="author"
-            value={author}
+            value={book.author}
             onChange={handleChange}
           />
         </div>
@@ -52,7 +102,7 @@ export default function AddBook() {
           <input
             type="text"
             name="title"
-            value={title}
+            value={book.title}
             onChange={handleChange}
           />
         </div>
@@ -61,7 +111,7 @@ export default function AddBook() {
           <textarea
             id="description"
             name="description"
-            value={description}
+            value={book.description}
             onChange={handleChange}
           />
         </div>
@@ -71,7 +121,7 @@ export default function AddBook() {
             type="text"
             name="image"
             placeholder="image link"
-            value={image}
+            value={book.image}
             onChange={handleChange}
           />
         </div>
@@ -80,18 +130,34 @@ export default function AddBook() {
           <label>username or moniker</label>
           <input
             type="text"
-            name="image"
-            value={moniker}
-            onChange={handleMonikerChange}
+            name="moniker"
+            value={book.comments[0].moniker}
+            onChange={(event) => {
+              setBook(prevState => ({
+                ...book,
+                comments: [{
+                  moniker: event.target.value,
+                  body: prevState.comments[0].body
+                }]
+              }))
+            }}
           />
         </div>
         <div className="form-group">
           <label>comment</label>
           <input
             type="text"
-            name="image"
-            value={bodyComment}
-            onChange={handleBodyChange}
+            name="body"
+            value={book.comments[0].body}
+            onChange={(event) => {
+              setBook(prevState=> ({
+                ...book,
+                comments: [{
+                  moniker: prevState.comments[0].moniker,
+                  body: event.target.value
+                }]
+              }))
+            }}
           />
         </div>
         <button type="submit">submit</button>
