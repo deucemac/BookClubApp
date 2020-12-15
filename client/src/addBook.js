@@ -14,33 +14,7 @@ export default function AddBook() {
       body: ''
     }]
   })
-  // const moniker = book.comments[0].moniker
-  const bodyComment = book.comments[0].body
   console.log(book);
-  // function handleBodyChange({ target }) {
-  //   const { name, value } = target
-  //   setBook(prevState => {
-  //     return {
-  //       ...prevState,
-  //       comments: [{
-  //         ...book.comments[0].moniker,
-  //         [name]: value
-  //       }]
-  //     }
-  //   })
-  // }
-
-  // function handleMonikerChange({ target }) {
-  //   const { name, value } = target
-  //   setBook(prevState => {
-  //     return {
-  //       ...prevState,
-  //       comments: [{
-  //         [name]: value
-  //       }]
-  //     }
-  //   })
-  // }
   
 
   function handleChange({ target }) {
@@ -49,14 +23,6 @@ export default function AddBook() {
     setBook(prevState => {
       return { ...prevState, [name]: value }
     })
-  }
-  function handleBodyChange({ target }) {
-    const { name, value } = target;
-
-    setBook(prevState=>({
-      ...prevState,
-      [name]: value
-    }))
   }
 
   async function submitForm(event) {
