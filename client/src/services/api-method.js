@@ -17,5 +17,10 @@ export const addBook = async (author, title, descr, img, comment) => {
   } catch {
     console.log('internal error')
   }
-  
+}
+
+export const getAllBooks = async () => {
+  const resp = await api.get('/')
+  // console.log(resp.data)
+  return resp.data
 }

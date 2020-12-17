@@ -14,7 +14,7 @@ export default function AddBook() {
       body: ''
     }]
   })
-  console.log(book);
+  // console.log(book);
   
 
   function handleChange({ target }) {
@@ -44,8 +44,23 @@ export default function AddBook() {
       payload.image,
       payload.comments[0],
     )
+
+    clearInputValue()
     
-    };
+  };
+  
+  function clearInputValue() {
+    setBook({
+      author: '',
+      title: '',
+      description: '',
+      image: '',
+      comments: [{
+        moniker: '',
+        body: ''
+      }]
+    })
+  }
 
   return (
     <div className="form-container">
