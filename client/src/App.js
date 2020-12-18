@@ -6,29 +6,22 @@ import { getAllBooks } from './services/api-method'
 
 function App() {
 
-  // const [book, setBook] = useState(() => {
-  //   const books = getAllBooks();
-  //   books.then((data) => {
-  //     return data
-  //   }).catch((err)=> console.log(err))
-  //   return books;
-  // });
-
   const [books, setBooks] = useState([])
+  // count and setCount are only used to be passed down so that useEffect can run again after you submit the form data, it's like toggling in order to trigger the useEffect 
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
     getAllBooks().then((data) => {
       setBooks(data)
       // setBooks(prev => [...prev, data])
     })
-  }, []);
+  }, [count]);
 
 
 
-  console.log(books)
   return (
     <div className="App">
-      <AddBook />
+      <AddBook setCount={setCount} count={count} />
       <div className="books-container">
         {books.length && books.map((book, index) => (
           <div key={index}>

@@ -3,7 +3,7 @@ import './css/addbook.scss'
 // import axios from 'axios';
 import {addBook} from './services/api-method'
 
-export default function AddBook() {
+export default function AddBook(props) {
   const [book, setBook] = useState({
     author: '',
     title: '',
@@ -15,8 +15,6 @@ export default function AddBook() {
     }]
   })
   // console.log(book);
-  
-
   function handleChange({ target }) {
     const { name, value } = target;
 
@@ -47,6 +45,8 @@ export default function AddBook() {
 
     clearInputValue()
     
+    props.setCount(props.count + 1)
+    console.log('rest')
   };
   
   function clearInputValue() {
